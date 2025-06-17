@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwbt82tcjayln"]
+[gd_scene load_steps=14 format=3 uid="uid://cwbt82tcjayln"]
 
 [ext_resource type="PackedScene" uid="uid://c4vty0fonp7q2" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://pwh2dymaakvy" path="res://Assets/world_tileset (4).png" id="2_e2o6t"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://fgspqur5s5p" path="res://Assets/Order_Text.png" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b1qp3oq6tm4ww" path="res://portal.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="6_ryrav"]
+[ext_resource type="Texture2D" uid="uid://cnptdttu3id7n" path="res://Assets/Free_pixel_food_16x16/Icons/cheese_gouda.png" id="7_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://chl8wogmbtrvn" path="res://Assets/Free_pixel_food_16x16/Icons/vegetable_tomato.png" id="8_vef74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
 texture = ExtResource("2_e2o6t")
@@ -330,6 +332,14 @@ position = Vector2(899, 281)
 
 [node name="Destination" parent="Portal" index="2"]
 position = Vector2(765, -21)
+
+[node name="CheeseGouda" type="Sprite2D" parent="."]
+position = Vector2(899, 253)
+texture = ExtResource("7_j5wjh")
+
+[node name="VegetableTomato" type="Sprite2D" parent="."]
+position = Vector2(1009, 256)
+texture = ExtResource("8_vef74")
 
 [editable path="Portal2"]
 [editable path="Portal"]

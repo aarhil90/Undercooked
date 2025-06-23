@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8de0g"]
 size = Vector2(32.0679, 43)
 
-[node name="GroundBlock" type="Area2D"]
+[node name="GroundBlock" type="Area2D" groups=["FLOOR"]]
 script = ExtResource("1_5l574")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

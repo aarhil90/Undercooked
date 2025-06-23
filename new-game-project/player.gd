@@ -29,8 +29,10 @@ func _physics_process(delta: float) -> void:
 	
 	if ray.is_colliding():
 		var collider = ray.get_collider()
-		if collider.is_ice:
-			active_friction = ICE_FRICTION
-		else:
-			active_friction = BASE_FRICTION
+		if collider.is_in_group("FLOOR"):
+			
+			if collider.is_ice:
+				active_friction = ICE_FRICTION
+			else:
+				active_friction = BASE_FRICTION
 			

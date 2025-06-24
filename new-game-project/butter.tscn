@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf02vhqtoefse"]
+
+[ext_resource type="Texture2D" uid="uid://cg4ouqid41061" path="res://Assets/Free_pixel_food_16x16/New Piskel (8).png" id="1_j5ec0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31815"]
+size = Vector2(15, 6.5)
+
+[node name="Butter" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.78125, 0.8125)
+texture = ExtResource("1_j5ec0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_31815")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://boov77skqrvrq"]
+
+[ext_resource type="Texture2D" uid="uid://db7siqbv4t5e1" path="res://Assets/Free_pixel_food_16x16/New Piskel (10).png" id="1_c72rc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0uiq"]
+atlas = ExtResource("1_c72rc")
+region = Rect2(0, 0, 60, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4a60"]
+atlas = ExtResource("1_c72rc")
+region = Rect2(60, 0, 60, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4xjk"]
+atlas = ExtResource("1_c72rc")
+region = Rect2(120, 0, 60, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inc8s"]
+atlas = ExtResource("1_c72rc")
+region = Rect2(180, 0, 60, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulylt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0uiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4a60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4xjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inc8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7i1c"]
+size = Vector2(57, 8)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lrjsk"]
+a = Vector2(-27, 2)
+b = Vector2(9, 7)
+
+[node name="ButterPAN" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18.5, -7)
+scale = Vector2(1.61667, 1.4375)
+sprite_frames = SubResource("SpriteFrames_ulylt")
+autoplay = "default"
+frame_progress = 0.57542
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_u7i1c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-37, -7)
+shape = SubResource("SegmentShape2D_lrjsk")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://boov77skqrvrq"]
+[gd_scene load_steps=10 format=3 uid="uid://boov77skqrvrq"]
 
 [ext_resource type="Texture2D" uid="uid://db7siqbv4t5e1" path="res://Assets/Free_pixel_food_16x16/New Piskel (10).png" id="1_c72rc"]
+[ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="2_g0uiq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0uiq"]
 atlas = ExtResource("1_c72rc")
@@ -38,12 +39,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7i1c"]
-size = Vector2(57, 8)
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lrjsk"]
 a = Vector2(-27, 2)
 b = Vector2(9, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4a60"]
+size = Vector2(58, 9)
 
 [node name="ButterPAN" type="StaticBody2D"]
 
@@ -54,10 +55,12 @@ sprite_frames = SubResource("SpriteFrames_ulylt")
 autoplay = "default"
 frame_progress = 0.57542
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 5)
-shape = SubResource("RectangleShape2D_u7i1c")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-37, -7)
+position = Vector2(-39, -8)
 shape = SubResource("SegmentShape2D_lrjsk")
+
+[node name="Killzone" parent="." instance=ExtResource("2_g0uiq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(1, 5.5)
+shape = SubResource("RectangleShape2D_k4a60")

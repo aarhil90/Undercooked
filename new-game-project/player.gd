@@ -8,6 +8,9 @@ extends CharacterBody2D
 var active_friction = BASE_FRICTION
 @onready var ray : RayCast2D = $floorRayCast2D
 
+func _ready():
+	add_to_group("player")
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

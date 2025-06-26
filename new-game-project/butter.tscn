@@ -1,17 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf02vhqtoefse"]
+[gd_scene load_steps=4 format=3 uid="uid://bf02vhqtoefse"]
 
+[ext_resource type="Script" uid="uid://c20mxtv73ur3b" path="res://Scripts/butter.gd" id="1_31815"]
 [ext_resource type="Texture2D" uid="uid://cg4ouqid41061" path="res://Assets/Free_pixel_food_16x16/New Piskel (8).png" id="1_j5ec0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_31815"]
-size = Vector2(15, 6.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ec0"]
+size = Vector2(11.8621, 5.02102)
 
-[node name="Butter" type="AnimatableBody2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+collision_mask = 0
+script = ExtResource("1_31815")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 0)
-scale = Vector2(0.78125, 0.8125)
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(0.625, 0.71875)
 texture = ExtResource("1_j5ec0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.25)
-shape = SubResource("RectangleShape2D_31815")
+[node name="PlatformShape" type="CollisionShape2D" parent="."]
+position = Vector2(0.318964, 1.08324)
+shape = SubResource("RectangleShape2D_j5ec0")

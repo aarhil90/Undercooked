@@ -3,29 +3,35 @@
 [ext_resource type="Texture2D" uid="uid://wa5rf72tndsg" path="res://Assets/New Piskel (14) (1).png" id="1_80h2d"]
 [ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="2_184pt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt7ss"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_80h2d"]
+atlas = ExtResource("1_80h2d")
+region = Rect2(0, 0, 28, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_184pt"]
 atlas = ExtResource("1_80h2d")
 region = Rect2(28, 0, 28, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kott"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt7ss"]
 atlas = ExtResource("1_80h2d")
 region = Rect2(0, 19, 28, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qajw5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kott"]
 atlas = ExtResource("1_80h2d")
 region = Rect2(28, 19, 28, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pf53"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qajw5"]
 atlas = ExtResource("1_80h2d")
 region = Rect2(0, 38, 28, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0v1c"]
-atlas = ExtResource("1_80h2d")
-region = Rect2(0, 0, 28, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8r4ah"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80h2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_184pt")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gt7ss")
 }, {
@@ -34,15 +40,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qajw5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1pf53")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0v1c")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -53,7 +53,9 @@ size = Vector2(58, 9)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8r4ah")
-frame_progress = 0.239989
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.0530877
 
 [node name="Killzone" parent="." instance=ExtResource("2_184pt")]
 

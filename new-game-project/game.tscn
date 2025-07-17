@@ -479,7 +479,6 @@ _data = {
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(565, 305)
-ICE_FRICTION = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, 0)

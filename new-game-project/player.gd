@@ -34,10 +34,24 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	# Update friction based on floor type
 	if ray.is_colliding():
 		var collider = ray.get_collider()
-		if collider.is_in_group("FLOOR"):
-			if collider.is_ice:
+		if collider and collider.is_in_group("FLOOR"):
+			if collider.get("is_ice") == true:  # Safe check for is_ice property
 				active_friction = ICE_FRICTION
 			else:
 				active_friction = BASE_FRICTION
+		else:
+			active_friction = BASE_FRICTION  # Default to base friction for non-floor colliders
+	else:
+		active_friction = BASE_FRICTION  # Default to base friction if no collision
+
+	# Animation
+	if is_on_floor():
+		if direction == 0:
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.play("run")
+	else:
+		animated_sprite.play("jump")

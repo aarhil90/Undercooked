@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4ggyskj5fit2"]
+[gd_scene load_steps=13 format=3 uid="uid://b4ggyskj5fit2"]
 
 [ext_resource type="Texture2D" uid="uid://wa5rf72tndsg" path="res://Assets/New Piskel (14) (1).png" id="1_80h2d"]
 [ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="2_184pt"]
@@ -26,7 +26,7 @@ region = Rect2(0, 38, 28, 19)
 [sub_resource type="SpriteFrames" id="SpriteFrames_8r4ah"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_80h2d")
 }, {
 "duration": 1.0,
@@ -41,24 +41,91 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qajw5")
 }],
-"loop": true,
+"loop": false,
 "name": &"new_animation",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4a60"]
-size = Vector2(58, 9)
+size = Vector2(25, 17)
 
-[node name="Knives" type="StaticBody2D"]
+[sub_resource type="Animation" id="Animation_80h2d"]
+length = 2.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.2, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["new_animation"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Killzone:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.19, 2.33),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_184pt"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Killzone:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gt7ss"]
+_data = {
+&"RESET": SubResource("Animation_184pt"),
+&"new_animation": SubResource("Animation_80h2d")
+}
+
+[node name="Knives" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8r4ah")
 animation = &"new_animation"
-autoplay = "new_animation"
-frame_progress = 0.0530877
 
 [node name="Killzone" parent="." instance=ExtResource("2_184pt")]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(1, 5.5)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_k4a60")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gt7ss")
+}
+autoplay = "new_animation"

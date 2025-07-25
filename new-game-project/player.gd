@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -300.0
 @export var BASE_FRICTION = 10
-@export var ICE_FRICTION = 5
+@export var ICE_FRICTION = 2
 var active_friction = BASE_FRICTION
 @onready var ray: RayCast2D = $floorRayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -44,8 +44,8 @@ func _physics_process(delta: float) -> void:
 				active_friction = BASE_FRICTION
 		else:
 			active_friction = BASE_FRICTION  # Default to base friction for non-floor colliders
-	else:
-		active_friction = BASE_FRICTION  # Default to base friction if no collision
+	#else:
+		#active_friction = BASE_FRICTION  # Default to base friction if no collision
 
 	# Animation
 	if is_on_floor():

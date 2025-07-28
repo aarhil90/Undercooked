@@ -1,6 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://iam6x8lwewxc"]
+[gd_scene load_steps=9 format=3 uid="uid://iam6x8lwewxc"]
 
 [ext_resource type="Script" uid="uid://cxp0rwjsubfun" path="res://Scripts/menu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://brbknapumcg56" path="res://Assets/Screenshot 2025-07-29 090317.png" id="2_ouk20"]
+[ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="3_mae5d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mae5d"]
+texture = ExtResource("2_ouk20")
+modulate_color = Color(0.325441, 0.325441, 0.325441, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mae5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hy44"]
+bg_color = Color(0.724643, 0.724643, 0.724643, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.713726)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytr4m"]
+bg_color = Color(0.427493, 0.427493, 0.427493, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.713726)
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lti8b"]
 bg_color = Color(1, 1, 1, 1)
@@ -19,6 +45,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lti8b")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mae5d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -39,8 +74,14 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mae5d")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mae5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lti8b")
 text = "Play"
 
@@ -48,8 +89,14 @@ text = "Play"
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mae5d")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mae5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lti8b")
 text = "Tutorial"
 
@@ -57,8 +104,14 @@ text = "Tutorial"
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mae5d")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mae5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lti8b")
 text = "Options"
 
@@ -66,10 +119,37 @@ text = "Options"
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mae5d")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mae5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lti8b")
 text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -252.0
+offset_right = 149.5
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 62
+text = "Undercooked"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_play_pressed"]

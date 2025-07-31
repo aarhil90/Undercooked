@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgjh5vdr1um6f"]
+[gd_scene load_steps=3 format=3 uid="uid://bgjh5vdr1um6f"]
 
 [ext_resource type="Script" uid="uid://bj4anvlhgmbm6" path="res://Scripts/options.gd" id="1_5v8ap"]
+[ext_resource type="AudioStream" uid="uid://dx7u8dmklde2u" path="res://Assets/music/Traditional Italian Sounds 🍋 Smooth 1950s Bar Music_Aperitivo in Sicily.mp3" id="2_se8ut"]
 
 [node name="options" type="Control"]
 layout_mode = 3
@@ -22,7 +23,24 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+[node name="Volume2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[node name="Mute" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mute"
+
+[node name="Mute2" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_se8ut")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute2" to="." method="_on_mute_2_toggled"]

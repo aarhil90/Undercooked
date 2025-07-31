@@ -12,6 +12,7 @@ func _on_tutorial_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	print ("options pressed")
+	get_tree().change_scene_to_file("res://options.tscn")
 
 
 func _on_exit_pressed() -> void:

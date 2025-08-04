@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bf02vhqtoefse" path="res://butter.tscn" id="11_iotsf"]
 [ext_resource type="Texture2D" uid="uid://cgc5h1cwmwphh" path="res://Assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Steak_Raw_Individual_Outline_BigWander_TheBanquet.png" id="12_iotsf"]
 [ext_resource type="PackedScene" uid="uid://b4ggyskj5fit2" path="res://knives.tscn" id="13_lc2xo"]
-[ext_resource type="AudioStream" uid="uid://dx7u8dmklde2u" path="res://Assets/music/Traditional Italian Sounds 🍋 Smooth 1950s Bar Music_Aperitivo in Sicily.mp3" id="14_215e1"]
+[ext_resource type="AudioStream" uid="uid://dj6175tkwrqi6" path="res://Assets/music/The Most Popular Italian Pizza Music_ Italian Tarantella _ Background Music For Food Videos [uNGZAMx3w-c].mp3" id="14_215e1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5wjh"]
 texture = ExtResource("2_eow3j")

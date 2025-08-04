@@ -1,7 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgjh5vdr1um6f"]
+[gd_scene load_steps=8 format=3 uid="uid://bgjh5vdr1um6f"]
 
 [ext_resource type="Script" uid="uid://bj4anvlhgmbm6" path="res://Scripts/options.gd" id="1_5v8ap"]
-[ext_resource type="AudioStream" uid="uid://dx7u8dmklde2u" path="res://Assets/music/Traditional Italian Sounds 🍋 Smooth 1950s Bar Music_Aperitivo in Sicily.mp3" id="2_se8ut"]
+[ext_resource type="AudioStream" uid="uid://dj6175tkwrqi6" path="res://Assets/music/The Most Popular Italian Pizza Music_ Italian Tarantella _ Background Music For Food Videos [uNGZAMx3w-c].mp3" id="2_se8ut"]
+[ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="3_ao2gm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07a1d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8250"]
+bg_color = Color(0.724643, 0.724643, 0.724643, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.713726)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kls10"]
+bg_color = Color(0.427493, 0.427493, 0.427493, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.713726)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kfld"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.713726)
+shadow_size = 5
 
 [node name="options" type="Control"]
 layout_mode = 3
@@ -41,6 +71,24 @@ layout_mode = 2
 stream = ExtResource("2_se8ut")
 volume_db = -10.0
 autoplay = true
+
+[node name="back" type="Button" parent="."]
+offset_left = 14.0
+offset_top = 583.0
+offset_right = 138.0
+offset_bottom = 631.0
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ao2gm")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_07a1d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p8250")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kls10")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kfld")
+text = "Back"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Mute2" to="." method="_on_mute_2_toggled"]

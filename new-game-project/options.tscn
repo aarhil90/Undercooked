@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgjh5vdr1um6f"]
+[gd_scene load_steps=10 format=3 uid="uid://bgjh5vdr1um6f"]
 
 [ext_resource type="Script" uid="uid://bj4anvlhgmbm6" path="res://Scripts/options.gd" id="1_5v8ap"]
+[ext_resource type="Texture2D" uid="uid://b36imo2u4qtww" path="res://Assets/Screenshot 2025-08-06 092857.png" id="2_07a1d"]
 [ext_resource type="AudioStream" uid="uid://dj6175tkwrqi6" path="res://Assets/music/The Most Popular Italian Pizza Music_ Italian Tarantella _ Background Music For Food Videos [uNGZAMx3w-c].mp3" id="2_se8ut"]
 [ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="3_ao2gm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8250"]
+texture = ExtResource("2_07a1d")
+modulate_color = Color(0.485703, 0.485704, 0.485703, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07a1d"]
 
@@ -42,6 +47,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5v8ap")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p8250")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -57,15 +71,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Volume"
 
-[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Mute" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mute"
-
-[node name="Mute2" type="CheckBox" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+max_value = 1.0
+step = 0.001
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_se8ut")
@@ -73,6 +82,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="back" type="Button" parent="."]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 583.0
 offset_right = 138.0
@@ -90,5 +100,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_kls10")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0kfld")
 text = "Back"
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_h_slider_value_changed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute2" to="." method="_on_mute_2_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

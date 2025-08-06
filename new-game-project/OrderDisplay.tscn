@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://g2gff2pigb25"]
+
+[ext_resource type="Script" uid="uid://c3tijkcc30vjp" path="res://order_display.gd" id="1_4jk5f"]
+[ext_resource type="Texture2D" uid="uid://dol6yfj7hcp5y" path="res://Assets/Free_pixel_food_16x16/Icons/canned_soup.png" id="1_qmt6o"]
+[ext_resource type="Texture2D" uid="uid://cnptdttu3id7n" path="res://Assets/Free_pixel_food_16x16/Icons/cheese_gouda.png" id="2_sd6qm"]
+[ext_resource type="Texture2D" uid="uid://chl8wogmbtrvn" path="res://Assets/Free_pixel_food_16x16/Icons/vegetable_tomato.png" id="3_1y4p5"]
+[ext_resource type="Texture2D" uid="uid://cgc5h1cwmwphh" path="res://Assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Steak_Raw_Individual_Outline_BigWander_TheBanquet.png" id="4_xbw5d"]
+[ext_resource type="Texture2D" uid="uid://dwag1rlj8b62y" path="res://Assets/Free_pixel_food_16x16/Icons/eggs_fried.png" id="5_b7n0i"]
+[ext_resource type="Texture2D" uid="uid://pvk2d7ondm0r" path="res://Assets/Free_pixel_food_16x16/Icons/soda_pepsi.png" id="6_elwgs"]
+[ext_resource type="Texture2D" uid="uid://d31gbsskap2hg" path="res://Assets/Free_pixel_food_16x16/Icons/vegetable_carrot.png" id="7_nlexe"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4jk5f")
+available_items = Array[Texture2D]([ExtResource("2_sd6qm"), ExtResource("3_1y4p5"), ExtResource("4_xbw5d"), ExtResource("5_b7n0i"), ExtResource("6_elwgs"), ExtResource("7_nlexe")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Item1" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Item1"]
+layout_mode = 2
+texture = ExtResource("1_qmt6o")
+stretch_mode = 4
+
+[node name="Item2" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Item2"]
+layout_mode = 2
+texture = ExtResource("1_qmt6o")
+stretch_mode = 4
+
+[node name="Item3" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Item3"]
+layout_mode = 2
+texture = ExtResource("1_qmt6o")
+stretch_mode = 4

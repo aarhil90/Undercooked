@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cwbt82tcjayln"]
+[gd_scene load_steps=41 format=4 uid="uid://cwbt82tcjayln"]
 
 [ext_resource type="PackedScene" uid="uid://c4vty0fonp7q2" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://d3dtwl2h0edvu" path="res://Assets/world_tileset (5) (1).png" id="2_eow3j"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://cgc5h1cwmwphh" path="res://Assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Steak_Raw_Individual_Outline_BigWander_TheBanquet.png" id="12_iotsf"]
 [ext_resource type="PackedScene" uid="uid://b4ggyskj5fit2" path="res://knives.tscn" id="13_lc2xo"]
 [ext_resource type="AudioStream" uid="uid://dj6175tkwrqi6" path="res://Assets/music/The Most Popular Italian Pizza Music_ Italian Tarantella _ Background Music For Food Videos [uNGZAMx3w-c].mp3" id="14_215e1"]
+[ext_resource type="PackedScene" uid="uid://g2gff2pigb25" path="res://OrderDisplay.tscn" id="15_7sc4i"]
+[ext_resource type="Script" uid="uid://cm6a5ywrukqdc" path="res://Counter.gd" id="16_80cx4"]
+[ext_resource type="PackedScene" uid="uid://co8b5qlw7dvif" path="res://cheese_pickup.tscn" id="17_e8heu"]
+[ext_resource type="PackedScene" uid="uid://u0t6y0sklq0k" path="res://meat_pickup.tscn" id="18_rvswv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5wjh"]
 texture = ExtResource("2_eow3j")
@@ -477,6 +481,9 @@ _data = {
 &"move5": SubResource("Animation_e8heu")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8heu"]
+size = Vector2(50, 31)
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
@@ -733,6 +740,28 @@ position = Vector2(4686, 311)
 stream = ExtResource("14_215e1")
 volume_db = -6.235
 autoplay = true
+
+[node name="Control" parent="." instance=ExtResource("15_7sc4i")]
+offset_left = 511.0
+offset_top = 295.0
+offset_right = 551.0
+offset_bottom = 335.0
+
+[node name="Area2D" type="Area2D" parent="Control"]
+script = ExtResource("16_80cx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Area2D"]
+position = Vector2(56, 40.5)
+shape = SubResource("RectangleShape2D_e8heu")
+
+[node name="Cheese" parent="." instance=ExtResource("17_e8heu")]
+position = Vector2(1295, 304)
+
+[node name="Meat" parent="." instance=ExtResource("18_rvswv")]
+position = Vector2(1250, 305)
+
+[connection signal="body_entered" from="Control/Area2D" to="Control/Area2D" method="_on_body_entered"]
+[connection signal="check_items" from="Control/Area2D" to="Control" method="check_order"]
 
 [editable path="GroundBlock"]
 [editable path="GroundBlock2"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://u0t6y0sklq0k"]
+
+[ext_resource type="Script" uid="uid://ccsj0uifiv52j" path="res://item.gd" id="1_twgqy"]
+[ext_resource type="Texture2D" uid="uid://cgc5h1cwmwphh" path="res://Assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Steak_Raw_Individual_Outline_BigWander_TheBanquet.png" id="2_twgqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_060sy"]
+radius = 8.0
+
+[node name="Meat" type="Area2D"]
+script = ExtResource("1_twgqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_060sy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.75, -2)
+scale = Vector2(1.26923, 1.4)
+texture = ExtResource("2_twgqy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

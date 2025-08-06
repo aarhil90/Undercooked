@@ -7,6 +7,7 @@ extends CharacterBody2D
 var active_friction = BASE_FRICTION
 @onready var ray: RayCast2D = $floorRayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var items_collected : Array[Texture2D] = []
 
 func _ready():
 	add_to_group("player")
@@ -55,3 +56,6 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
+
+func add_item(sprite:Texture2D):
+	items_collected.append(sprite)

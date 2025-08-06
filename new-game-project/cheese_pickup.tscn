@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://co8b5qlw7dvif"]
+
+[ext_resource type="Script" uid="uid://ccsj0uifiv52j" path="res://item.gd" id="1_q8nok"]
+[ext_resource type="Texture2D" uid="uid://cnptdttu3id7n" path="res://Assets/Free_pixel_food_16x16/Icons/cheese_gouda.png" id="2_kbe1w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egdwb"]
+radius = 6.08276
+
+[node name="Cheese" type="Area2D"]
+script = ExtResource("1_q8nok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_egdwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kbe1w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

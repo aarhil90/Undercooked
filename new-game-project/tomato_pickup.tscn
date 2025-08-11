@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy72083ofcsew"]
+
+[ext_resource type="Script" uid="uid://ccsj0uifiv52j" path="res://item.gd" id="1_36hx5"]
+[ext_resource type="Texture2D" uid="uid://chl8wogmbtrvn" path="res://Assets/Free_pixel_food_16x16/Icons/vegetable_tomato.png" id="2_36hx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_060sy"]
+radius = 8.0
+
+[node name="Tomato" type="Area2D"]
+script = ExtResource("1_36hx5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_060sy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.75, -2)
+scale = Vector2(1.26923, 1.4)
+texture = ExtResource("2_36hx5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

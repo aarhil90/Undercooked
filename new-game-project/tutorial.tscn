@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bdvg4c8wlf2hh"]
+[gd_scene load_steps=15 format=4 uid="uid://bdvg4c8wlf2hh"]
 
 [ext_resource type="PackedScene" uid="uid://c4vty0fonp7q2" path="res://player.tscn" id="1_yb1ct"]
 [ext_resource type="Texture2D" uid="uid://d1wd6r6i1k0gj" path="res://Assets/world_tileset (5) (1) (1).png" id="2_ehuit"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="3_ehuit"]
 [ext_resource type="PackedScene" uid="uid://bf02vhqtoefse" path="res://butter.tscn" id="3_hu44a"]
 [ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="6_hu44a"]
+[ext_resource type="PackedScene" uid="uid://cm53cxitvl3t6" path="res://button.tscn" id="7_4t6hg"]
+[ext_resource type="Texture2D" uid="uid://52cqg4m6j887" path="res://Assets/New Piskel (16).png" id="8_7vrqn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mrt3"]
 texture = ExtResource("2_ehuit")
@@ -230,3 +232,17 @@ text = "Welcome to the Tutorial!
 Use Left and Right Arrow Keys to move. 
 
 Also use Space to Jump."
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackButton" parent="CanvasLayer" instance=ExtResource("7_4t6hg")]
+offset_left = 1044.0
+offset_top = 33.0
+offset_right = 1117.0
+offset_bottom = 106.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/BackButton"]
+position = Vector2(35, 38)
+scale = Vector2(4.65625, 4.5)
+texture = ExtResource("8_7vrqn")

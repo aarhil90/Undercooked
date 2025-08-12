@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://20pxi65gyb1n"]
+
+[ext_resource type="Script" uid="uid://cphjdwls58er5" path="res://food_spawn_point.gd" id="1_1qfq3"]
+
+[node name="FoodSpawnPoint" type="Marker2D" groups=["SpawnPoint"]]
+script = ExtResource("1_1qfq3")

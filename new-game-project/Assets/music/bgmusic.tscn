@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4t8cha4f0o4a"]
+
+[ext_resource type="AudioStream" uid="uid://dj6175tkwrqi6" path="res://Assets/music/The Most Popular Italian Pizza Music_ Italian Tarantella _ Background Music For Food Videos [uNGZAMx3w-c].mp3" id="1_or7bu"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_or7bu")
+volume_db = -10.0
+autoplay = true

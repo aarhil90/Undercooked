@@ -13,7 +13,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4jk5f")
-available_items = Array[Texture2D]([ExtResource("2_sd6qm"), ExtResource("3_1y4p5"), ExtResource("4_xbw5d"), ExtResource("5_b7n0i"), ExtResource("6_elwgs"), ExtResource("7_nlexe")])
+available_items = Array[Texture2D]([ExtResource("2_sd6qm"), ExtResource("4_xbw5d"), ExtResource("3_1y4p5"), ExtResource("7_nlexe"), ExtResource("6_elwgs"), ExtResource("5_b7n0i")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

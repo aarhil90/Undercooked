@@ -15,6 +15,10 @@ run/main_scene="uid://cwbt82tcjayln"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Bgmusic="*res://Assets/music/bgmusic.tscn"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgjh5vdr1um6f"]
+[gd_scene load_steps=9 format=3 uid="uid://bgjh5vdr1um6f"]
 
 [ext_resource type="Script" uid="uid://bj4anvlhgmbm6" path="res://Scripts/options.gd" id="1_5v8ap"]
 [ext_resource type="Texture2D" uid="uid://b36imo2u4qtww" path="res://Assets/Screenshot 2025-08-06 092857.png" id="2_07a1d"]
-[ext_resource type="AudioStream" uid="uid://dj6175tkwrqi6" path="res://Assets/music/The Most Popular Italian Pizza Music_ Italian Tarantella _ Background Music For Food Videos [uNGZAMx3w-c].mp3" id="2_se8ut"]
 [ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="3_ao2gm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8250"]
@@ -75,11 +74,6 @@ text = "Volume"
 layout_mode = 2
 max_value = 1.0
 step = 0.001
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_se8ut")
-volume_db = -10.0
-autoplay = true
 
 [node name="back" type="Button" parent="."]
 layout_mode = 0

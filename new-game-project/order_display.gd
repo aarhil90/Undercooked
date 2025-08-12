@@ -1,5 +1,5 @@
 extends Control
-
+@export var spawner : Node2D
 # Export array for item textures - set these in the inspector
 @export var available_items: Array[Texture2D] = []
 # Current order requirements
@@ -8,14 +8,12 @@ var current_order: Array[Texture2D] = []
 @onready var item1_texture: TextureRect = $MarginContainer/HBoxContainer/Item1/TextureRect
 @onready var item2_texture: TextureRect = $MarginContainer/HBoxContainer/Item2/TextureRect
 @onready var item3_texture: TextureRect = $MarginContainer/HBoxContainer/Item3/TextureRect
-
 func _ready():
 	# Debug: Check what's in the array
 	print("Available items count: ", available_items.size())
 	for i in range(available_items.size()):
 		print("Item ", i, ": ", available_items[i])
 	generate_new_order()
-
 func generate_new_order():
 	"""Generates a new random order of 1-3 unique items"""
 	# Clear previous order
@@ -62,7 +60,6 @@ func generate_new_order():
 		texture_rects[i].visible = true
 	
 	print("New order generated: ", current_order.size(), " unique items")
-
 func check_order(player_items: Array[Texture2D]) -> bool:
 	"""
 	Checks if the player has all required items, regardless of order.
@@ -88,8 +85,8 @@ func check_order(player_items: Array[Texture2D]) -> bool:
 	print("Success!")
 	player_items.clear()
 	generate_new_order()
+	spawner.respawn()
 	return true
-
 # Alternative function if you want to check with strict order requirements
 func check_order_strict_sequence(player_items: Array[Texture2D]) -> bool:
 	"""
@@ -110,7 +107,6 @@ func check_order_strict_sequence(player_items: Array[Texture2D]) -> bool:
 	print("Success!")
 	generate_new_order()
 	return true
-
 # Getter function to access current order from other scripts
 func get_current_order() -> Array[Texture2D]:
 	return current_order

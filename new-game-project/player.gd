@@ -9,6 +9,7 @@ var active_friction = BASE_FRICTION
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var items_collected : Array[Texture2D] = []
 
+
 func _ready():
 	add_to_group("player")
 	

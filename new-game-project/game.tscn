@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cwbt82tcjayln"]
+[gd_scene load_steps=50 format=4 uid="uid://cwbt82tcjayln"]
 
 [ext_resource type="PackedScene" uid="uid://c4vty0fonp7q2" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://3ujfvqmwme7s" path="res://Assets/world_tileset (5) (1) (2).png" id="2_vaj68"]
@@ -23,8 +23,10 @@
 [ext_resource type="PackedScene" uid="uid://dtfvmx77ybew6" path="res://pepsi_pickup.tscn" id="20_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://dydt6karjffl6" path="res://egg_pickup.tscn" id="21_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://c3nleghglfspf" path="res://carrot_pickup.tscn" id="22_vaj68"]
+[ext_resource type="PackedScene" uid="uid://e0gmgjt6bwul" path="res://money_ui.tscn" id="22_xa8c5"]
 [ext_resource type="Script" uid="uid://dqn3aabna7pxu" path="res://spawn_points.gd" id="24_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://20pxi65gyb1n" path="res://FoodSpawnPoint.tscn" id="25_vaj68"]
+[ext_resource type="PackedScene" uid="uid://brc6crq8njj17" path="res://inventory_ui.tscn" id="26_inventory"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2p71"]
 texture = ExtResource("2_vaj68")
@@ -749,10 +751,10 @@ offset_right = 551.0
 offset_bottom = 335.0
 spawner = NodePath("../SpawnPoints")
 
-[node name="Area2D" type="Area2D" parent="Control"]
+[node name="OrderChecker" type="Area2D" parent="Control"]
 script = ExtResource("16_80cx4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/OrderChecker"]
 position = Vector2(56, 40.5)
 shape = SubResource("RectangleShape2D_e8heu")
 
@@ -776,6 +778,12 @@ position = Vector2(466, 302)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="MoneyUI" parent="CanvasLayer" instance=ExtResource("22_xa8c5")]
+offset_left = -1130.0
+offset_top = 18.0
+offset_right = -850.0
+offset_bottom = 98.0
+
 [node name="BackButton" parent="CanvasLayer" instance=ExtResource("19_boyg6")]
 offset_left = 1044.0
 offset_top = 33.0
@@ -787,6 +795,12 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(35, 38)
 scale = Vector2(4.65625, 4.5)
 texture = ExtResource("20_e36ub")
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("26_inventory")]
+offset_left = -664.0
+offset_top = 13.0
+offset_right = -464.0
+offset_bottom = 63.0
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 script = ExtResource("24_f1jbl")
@@ -827,8 +841,7 @@ spawn_item = ExtResource("21_f1jbl")
 position = Vector2(686, 308)
 spawn_item = ExtResource("17_e8heu")
 
-[connection signal="body_entered" from="Control/Area2D" to="Control/Area2D" method="_on_body_entered"]
-[connection signal="check_items" from="Control/Area2D" to="Control" method="check_order"]
+[connection signal="body_entered" from="Control/OrderChecker" to="Control/OrderChecker" method="_on_body_entered"]
 
 [editable path="GroundBlock"]
 [editable path="GroundBlock2"]

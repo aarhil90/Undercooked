@@ -21,5 +21,5 @@ func spawn_food():
 func respawn():
 	var existing_food = get_tree().get_nodes_in_group("Food")
 	for food in existing_food:
-		queue_free()
+		food.queue_free()
 	spawn_food()

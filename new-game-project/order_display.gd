@@ -8,11 +8,17 @@ var current_order: Array[Texture2D] = []
 @onready var item1_texture: TextureRect = $MarginContainer/HBoxContainer/Item1/TextureRect
 @onready var item2_texture: TextureRect = $MarginContainer/HBoxContainer/Item2/TextureRect
 @onready var item3_texture: TextureRect = $MarginContainer/HBoxContainer/Item3/TextureRect
+# Reference to money UI
+var money_ui: Control = null
 func _ready():
 	# Debug: Check what's in the array
 	print("Available items count: ", available_items.size())
 	for i in range(available_items.size()):
 		print("Item ", i, ": ", available_items[i])
+	# Find money UI in the scene
+	money_ui = get_tree().get_first_node_in_group("MoneyUI")
+	if money_ui and money_ui.has_signal("game_over"):
+		money_ui.game_over.connect(_on_game_over)
 	generate_new_order()
 func generate_new_order():
 	"""Generates a new random order of 1-3 unique items"""
@@ -60,14 +66,23 @@ func generate_new_order():
 		texture_rects[i].visible = true
 	
 	print("New order generated: ", current_order.size(), " unique items")
+	
+	# Start the money timer for this order
+	if money_ui and money_ui.has_method("start_new_order"):
+		money_ui.start_new_order(current_order.size())
 func check_order(player_items: Array[Texture2D]) -> bool:
 	"""
 	Checks if the player has all required items, regardless of order.
 	Returns true if they have all items, false otherwise.
 	"""
 	print("Checking Order")
-	# Check if arrays have the same length
-	if player_items.size() != current_order.size():
+	print("Player has ", player_items.size(), " items, order requires ", current_order.size(), " items")
+	print("Player items: ", player_items)
+	print("Required items: ", current_order)
+	
+	# Check if player has at least the required number of items
+	if player_items.size() < current_order.size():
+		print("Not enough items - order failed")
 		return false
 	
 	# Create copies to avoid modifying originals
@@ -78,12 +93,25 @@ func check_order(player_items: Array[Texture2D]) -> bool:
 	for required_item in order_copy:
 		var found_index = player_copy.find(required_item)
 		if found_index == -1:
+			print("Missing required item: ", required_item)
 			return false
 		player_copy.remove_at(found_index)
 	
 	# If we get here, all items were found
 	print("Success!")
-	player_items.clear()
+	
+	# Award money for completing the order
+	var money_earned = 0
+	if money_ui and money_ui.has_method("complete_order"):
+		money_earned = money_ui.complete_order()
+	
+	# Clear the player's entire inventory
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		player.items_collected.clear()
+		if player.has_method("update_inventory_display"):
+			player.update_inventory_display()
+	
 	generate_new_order()
 	spawner.respawn()
 	return true
@@ -110,3 +138,13 @@ func check_order_strict_sequence(player_items: Array[Texture2D]) -> bool:
 # Getter function to access current order from other scripts
 func get_current_order() -> Array[Texture2D]:
 	return current_order
+
+func _on_game_over(final_score: int):
+	"""Handle game over - transition to high score scene"""
+	print("Game over! Final score: $", final_score)
+	
+	# Store the final score in a temporary variable that the high score scene can access
+	get_tree().set_meta("final_score", final_score)
+	
+	# Transition to high score scene
+	get_tree().change_scene_to_file("res://high_score.tscn")

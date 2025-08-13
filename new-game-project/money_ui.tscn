@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://e0gmgjt6bwul"]
+
+[ext_resource type="Script" uid="uid://bmg163mjjsy7f" path="res://money_ui.gd" id="1_money_script"]
+
+[node name="MoneyUI" type="Control" groups=["MoneyUI"]]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 100.0
+grow_horizontal = 0
+script = ExtResource("1_money_script")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.2, 0.2, 0.2, 0.8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TotalMoneyLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Total Money: $0"
+horizontal_alignment = 1
+
+[node name="CurrentOrderLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Order Value: $0"
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Time: --"
+horizontal_alignment = 1

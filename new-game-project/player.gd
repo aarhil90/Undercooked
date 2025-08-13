@@ -8,10 +8,13 @@ var active_friction = BASE_FRICTION
 @onready var ray: RayCast2D = $floorRayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var items_collected : Array[Texture2D] = []
+var inventory_ui: Control = null
 
 
 func _ready():
-	add_to_group("player")
+	add_to_group("Player")
+	# Find inventory UI in the scene
+	inventory_ui = get_tree().get_first_node_in_group("InventoryUI")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -59,4 +62,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("jump")
 
 func add_item(sprite:Texture2D):
-	items_collected.append(sprite)
+	# Only add if not already in inventory (set behavior)
+	if not items_collected.has(sprite):
+		items_collected.append(sprite)
+		update_inventory_display()
+		print("Added new item to inventory")
+	else:
+		print("Item already in inventory, skipping")
+
+func update_inventory_display():
+	if inventory_ui and inventory_ui.has_method("update_inventory"):
+		inventory_ui.update_inventory(items_collected)

@@ -1,11 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm53cxitvl3t6"]
+[gd_scene load_steps=3 format=3 uid="uid://cm53cxitvl3t6"]
 
 [ext_resource type="Script" uid="uid://bardp4rdp1aji" path="res://Scripts/button.gd" id="1_n4tde"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r04n3"]
 
 [node name="BackButton" type="Button"]
 offset_top = -2.0
 offset_right = 9.0
 offset_bottom = 8.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_r04n3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r04n3")
 script = ExtResource("1_n4tde")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

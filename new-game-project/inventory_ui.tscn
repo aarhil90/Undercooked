@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://brc6crq8njj17"]
+[gd_scene load_steps=4 format=3 uid="uid://brc6crq8njj17"]
 
 [ext_resource type="Script" uid="uid://4m7c00kxoxsv" path="res://inventory_ui.gd" id="1_inventory_script"]
+[ext_resource type="Texture2D" uid="uid://b31yu56sicqkh" path="res://Assets/New Piskel (17).png" id="2_34y5v"]
+[ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="2_gf3dx"]
 
 [node name="InventoryUI" type="Control" groups=["InventoryUI"]]
 layout_mode = 3
@@ -12,7 +14,13 @@ offset_bottom = 50.0
 grow_horizontal = 0
 script = ExtResource("1_inventory_script")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(93, 19)
+scale = Vector2(9.29688, 6.47656)
+texture = ExtResource("2_34y5v")
+
 [node name="Panel" type="Panel" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 15
@@ -31,6 +39,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gf3dx")
 text = "Inventory"
 horizontal_alignment = 1
 

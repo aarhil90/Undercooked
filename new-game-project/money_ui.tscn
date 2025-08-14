@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://e0gmgjt6bwul"]
+[gd_scene load_steps=4 format=3 uid="uid://e0gmgjt6bwul"]
 
 [ext_resource type="Script" uid="uid://bmg163mjjsy7f" path="res://money_ui.gd" id="1_money_script"]
+[ext_resource type="Texture2D" uid="uid://dluwc6udpeew4" path="res://Assets/New Piskel (18).png" id="2_lvvax"]
+[ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="2_peni5"]
 
 [node name="MoneyUI" type="Control" groups=["MoneyUI"]]
 layout_mode = 3
@@ -14,7 +16,13 @@ offset_bottom = 100.0
 grow_horizontal = 0
 script = ExtResource("1_money_script")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(138.5, 22)
+scale = Vector2(10.4063, 9)
+texture = ExtResource("2_lvvax")
+
 [node name="Panel" type="Panel" parent="."]
+visible = false
 modulate = Color(0.2, 0.2, 0.2, 0.8)
 layout_mode = 1
 anchors_preset = 15
@@ -28,20 +36,27 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 17.0
+offset_right = 11.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TotalMoneyLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_peni5")
 text = "Total Money: $0"
 horizontal_alignment = 1
 
 [node name="CurrentOrderLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_peni5")
 text = "Order Value: $0"
 horizontal_alignment = 1
 
 [node name="TimerLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_peni5")
 text = "Time: --"
 horizontal_alignment = 1

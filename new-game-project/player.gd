@@ -1,15 +1,16 @@
 extends CharacterBody2D
-
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -300.0
 @export var BASE_FRICTION = 10
 @export var ICE_FRICTION = 2
+@export var BASE_ACCELERATION = 15  # Add acceleration control
+@export var ICE_ACCELERATION = 5    # Slower acceleration on ice
 var active_friction = BASE_FRICTION
+var active_acceleration = BASE_ACCELERATION
 @onready var ray: RayCast2D = $floorRayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var items_collected : Array[Texture2D] = []
 var inventory_ui: Control = null
-
 
 func _ready():
 	add_to_group("Player")
@@ -20,15 +21,31 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
+	# Update friction and acceleration based on floor type
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		if collider and collider.is_in_group("FLOOR"):
+			if collider.get("is_ice") == true:
+				active_friction = ICE_FRICTION
+				active_acceleration = ICE_ACCELERATION
+			else:
+				active_friction = BASE_FRICTION
+				active_acceleration = BASE_ACCELERATION
+		else:
+			active_friction = BASE_FRICTION
+			active_acceleration = BASE_ACCELERATION
+	
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		# Use move_toward for gradual acceleration instead of instant velocity
+		var target_velocity = direction * SPEED
+		velocity.x = move_toward(velocity.x, target_velocity, active_acceleration)
+		
 		# Flip sprite based on direction
 		if direction > 0:  # Moving right
 			animated_sprite.flip_h = false
@@ -36,22 +53,9 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.flip_h = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, active_friction)
-
+	
 	move_and_slide()
 	
-	# Update friction based on floor type
-	if ray.is_colliding():
-		var collider = ray.get_collider()
-		if collider and collider.is_in_group("FLOOR"):
-			if collider.get("is_ice") == true:  # Safe check for is_ice property
-				active_friction = ICE_FRICTION
-			else:
-				active_friction = BASE_FRICTION
-		else:
-			active_friction = BASE_FRICTION  # Default to base friction for non-floor colliders
-	#else:
-		#active_friction = BASE_FRICTION  # Default to base friction if no collision
-
 	# Animation
 	if is_on_floor():
 		if direction == 0:

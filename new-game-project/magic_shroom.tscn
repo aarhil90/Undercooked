@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c28ywxgwcpgqg"]
+
+[ext_resource type="Script" uid="uid://nag0g2vnxmx6" path="res://Scripts/ItemPickup.gd" id="1_i4cyp"]
+[ext_resource type="Texture2D" uid="uid://dgeg3u4y5m7u" path="res://Assets/New Piskel (20).png" id="1_iwap2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4cyp"]
+radius = 9.0
+
+[node name="Magic_Shroom" type="Area2D"]
+script = ExtResource("1_i4cyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iwap2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i4cyp")

@@ -6,8 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4cyp"]
 radius = 9.0
 
-[node name="Magic_Shroom" type="Area2D"]
+[node name="Magic_Shroom" type="Area2D" node_paths=PackedStringArray("distortion_controller")]
 script = ExtResource("1_i4cyp")
+distortion_controller = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_iwap2")

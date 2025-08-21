@@ -1,38 +1,23 @@
+extends Area2D
 
-extends Area2D  # or RigidBody2D, CharacterBody2D, etc.
-
-signal item_picked_up(item_name: String)
-
-@export var item_name: String = "Magic Shroom"
-@export var pickup_sound: AudioStream  # Optional pickup sound
+# Drag the ColorRect with DistortionController script here in the inspector
+@export var distortion_controller: ColorRect
 
 func _ready():
-	# Add to the item_pickups group so DistortionManager can find it
-	add_to_group("item_pickups")
-	
-	# Connect collision signals
-	if has_signal("body_entered"):
-		body_entered.connect(_on_body_entered)
-	elif has_signal("area_entered"):
-		area_entered.connect(_on_area_entered)
+	# Connect to player entering the area
+	body_entered.connect(_on_player_entered)
 
-func _on_body_entered(body):
-	if body.is_in_group("player") or body.name == "Player":
-		pickup_item()
-
-func _on_area_entered(area):
-	if area.is_in_group("player") or area.name == "Player":
+func _on_player_entered(body):
+	# Check if it's the player
+	if body.name == "Player":
 		pickup_item()
 
 func pickup_item():
-	print("Picked up: ", item_name)
+	print("Item picked up!")
 	
-	# Play sound if available
-	"if pickup_sound:
-		AudioManager.play_sound(pickup_sound)  # Adjust to your audio system"
+	# Activate the distortion effect
+	if distortion_controller and distortion_controller.has_method("activate_distortion"):
+		distortion_controller.activate_distortion()
 	
-	# Emit signal
-	item_picked_up.emit(item_name)
-	
-	# Remove the item
+	# Remove this item
 	queue_free()

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cbkqmhi4q4gar"]
+
+[ext_resource type="Shader" uid="uid://do4rk43mk0tgy" path="res://game.gdshader" id="1_4fwi7"]
+
+[resource]
+shader = ExtResource("1_4fwi7")
+shader_parameter/top_color = Color(1, 1, 1, 0)
+shader_parameter/bottom_color = Color(0, 0, 0, 1)
+shader_parameter/gradient_power = 0.174

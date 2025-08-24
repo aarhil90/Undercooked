@@ -109,7 +109,7 @@ func validate_high_scores():
 				score_entry["timestamp"] = Time.get_unix_time_from_system()
 			valid_scores.append(score_entry)
 	
-	high_scores = valid_scores
+	 high_scores = valid_scores
 	
 	# Sort by score (highest first)
 	high_scores.sort_custom(func(a, b): return a.score > b.score)

@@ -5,6 +5,13 @@ extends CharacterBody2D
 @export var ICE_FRICTION = 2
 @export var BASE_ACCELERATION = 15  # Add acceleration control
 @export var ICE_ACCELERATION = 5    # Slower acceleration on ice
+
+# Water physics variables
+@export var WATER_SPEED_MULTIPLIER = 0.4
+@export var WATER_JUMP_MULTIPLIER = 0.6
+@export var WATER_GRAVITY_MULTIPLIER = 0.17
+var in_water = false
+
 var active_friction = BASE_FRICTION
 var active_acceleration = BASE_ACCELERATION
 @onready var ray: RayCast2D = $floorRayCast2D
@@ -18,12 +25,15 @@ func _ready():
 	inventory_ui = get_tree().get_first_node_in_group("InventoryUI")
 	
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Add the gravity (reduced in water)
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-	# Handle jump.
+		var gravity_multiplier = WATER_GRAVITY_MULTIPLIER if in_water else 1.0
+		velocity += get_gravity() * delta * gravity_multiplier
+	
+	# Handle jump (weaker in water)
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		var jump_multiplier = WATER_JUMP_MULTIPLIER if in_water else 1.0
+		velocity.y = JUMP_VELOCITY * jump_multiplier
 	
 	# Update friction and acceleration based on floor type
 	if ray.is_colliding():
@@ -42,8 +52,13 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
+		# Apply water speed reduction
+		var current_speed = SPEED
+		if in_water:
+			current_speed *= WATER_SPEED_MULTIPLIER
+			
 		# Use move_toward for gradual acceleration instead of instant velocity
-		var target_velocity = direction * SPEED
+		var target_velocity = direction * current_speed
 		velocity.x = move_toward(velocity.x, target_velocity, active_acceleration)
 		
 		# Flip sprite based on direction
@@ -65,6 +80,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.play("jump")
 
+# Water area signal handlers - use these names when connecting signals
+
+
 func add_item(sprite:Texture2D):
 	# Only add if not already in inventory (set behavior)
 	if not items_collected.has(sprite):
@@ -77,3 +95,17 @@ func add_item(sprite:Texture2D):
 func update_inventory_display():
 	if inventory_ui and inventory_ui.has_method("update_inventory"):
 		inventory_ui.update_inventory(items_collected)
+
+
+func _on_water_detection_area_entered(area: Area2D) -> void:
+	print("WATER")
+	if area is Water:
+		in_water = true
+		print("Entered water")
+
+
+
+func _on_water_detection_area_exited(area: Area2D) -> void:
+	if area is Water:
+		in_water = false
+		print("Exited water")

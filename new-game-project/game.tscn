@@ -1,14 +1,14 @@
-[gd_scene load_steps=53 format=4 uid="uid://cwbt82tcjayln"]
+[gd_scene load_steps=54 format=4 uid="uid://cwbt82tcjayln"]
 
 [ext_resource type="PackedScene" uid="uid://c4vty0fonp7q2" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="Shader" uid="uid://c4oialitmxa11" path="res://wavy.gdshader" id="2_5b14r"]
 [ext_resource type="Texture2D" uid="uid://b0d6trrymk6cl" path="res://world_tileset (5) (1) (2) (1).png" id="2_i2p71"]
+[ext_resource type="Shader" uid="uid://4b54rinehhxc" path="res://water.gdshader" id="3_dhpj7"]
 [ext_resource type="Texture2D" uid="uid://fgspqur5s5p" path="res://Assets/Order_Text.png" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b1qp3oq6tm4ww" path="res://portal.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="6_ryrav"]
 [ext_resource type="Texture2D" uid="uid://cnptdttu3id7n" path="res://Assets/Free_pixel_food_16x16/Icons/cheese_gouda.png" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://dq6k65v0l21nd" path="res://GroundArea.tscn" id="8_j5wjh"]
-[ext_resource type="Texture2D" uid="uid://chl8wogmbtrvn" path="res://Assets/Free_pixel_food_16x16/Icons/vegetable_tomato.png" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://boov77skqrvrq" path="res://butter_pan.tscn" id="10_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://bf02vhqtoefse" path="res://butter.tscn" id="11_iotsf"]
 [ext_resource type="Texture2D" uid="uid://cgc5h1cwmwphh" path="res://Assets/BigWander_TheBanquet/IndividualSprites/Outline/pt1/Steak_Raw_Individual_Outline_BigWander_TheBanquet.png" id="12_iotsf"]
@@ -31,7 +31,14 @@
 [ext_resource type="PackedScene" uid="uid://c28ywxgwcpgqg" path="res://magic_shroom.tscn" id="27_bnpwn"]
 [ext_resource type="Material" uid="uid://cbkqmhi4q4gar" path="res://DROP.tres" id="29_bnpwn"]
 [ext_resource type="PackedScene" uid="uid://0ecx6ux7v1x4" path="res://Water.tscn" id="31_xfvwf"]
-[ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="32_dhpj7"]
+[ext_resource type="Texture2D" uid="uid://dwag1rlj8b62y" path="res://Assets/Free_pixel_food_16x16/Icons/eggs_fried.png" id="32_dhpj7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7knny"]
+shader = ExtResource("3_dhpj7")
+shader_parameter/distortion_strength = 0.007
+shader_parameter/wave_speed = 2.455
+shader_parameter/wave_frequency = 20.0
+shader_parameter/water_tint = Color(0.5, 0.8, 1, 0.3)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xa8c5"]
 texture = ExtResource("2_i2p71")
@@ -477,6 +484,15 @@ shader_parameter/base_color = Color(1, 1, 1, 0.5)
 
 [node name="Game" type="Node2D"]
 
+[node name="WaterD" type="ColorRect" parent="."]
+z_index = 6
+material = SubResource("ShaderMaterial_7knny")
+offset_left = 5506.0
+offset_top = -223.0
+offset_right = 6807.0
+offset_bottom = 744.0
+color = Color(0, 0.780392, 0.780392, 0.4)
+
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(613, 334)
 
@@ -520,12 +536,8 @@ shape = SubResource("WorldBoundaryShape2D_eow3j")
 position = Vector2(1126, 255)
 texture = ExtResource("7_j5wjh")
 
-[node name="VegetableTomato" type="Sprite2D" parent="."]
-position = Vector2(899, 252)
-texture = ExtResource("8_vef74")
-
 [node name="SteakRawIndividualOutlineBigWanderTheBanquet" type="Sprite2D" parent="."]
-position = Vector2(1012.13, 252)
+position = Vector2(897, 255)
 scale = Vector2(1.51924, 1.4)
 texture = ExtResource("12_iotsf")
 
@@ -737,22 +749,22 @@ position = Vector2(30.5, 36)
 shape = SubResource("RectangleShape2D_e8heu")
 
 [node name="Cheese" parent="." instance=ExtResource("17_e8heu")]
-position = Vector2(5304, 248)
+position = Vector2(380, 303)
 
 [node name="Meat" parent="." instance=ExtResource("18_rvswv")]
-position = Vector2(3635, 329)
+position = Vector2(1984, 110)
 
 [node name="Tomato" parent="." instance=ExtResource("19_x5p1p")]
-position = Vector2(2000, 110)
+position = Vector2(309, 303)
 
 [node name="Pepsi" parent="." instance=ExtResource("20_qhcbd")]
-position = Vector2(273, 304)
+position = Vector2(6387, 263)
 
 [node name="Egg" parent="." instance=ExtResource("21_f1jbl")]
-position = Vector2(316, 304)
+position = Vector2(3618, 330)
 
 [node name="Carrot" parent="." instance=ExtResource("22_vaj68")]
-position = Vector2(359, 303)
+position = Vector2(5277, 249)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -784,27 +796,27 @@ offset_bottom = 63.0
 script = ExtResource("24_f1jbl")
 
 [node name="Marker2D" parent="SpawnPoints" instance=ExtResource("25_vaj68")]
-position = Vector2(359, 303)
+position = Vector2(5277, 249)
 spawn_item = ExtResource("22_vaj68")
 
 [node name="Marker2D4" parent="SpawnPoints" instance=ExtResource("25_vaj68")]
-position = Vector2(3635, 329)
+position = Vector2(1984, 110)
 spawn_item = ExtResource("18_rvswv")
 
 [node name="Marker2D5" parent="SpawnPoints" instance=ExtResource("25_vaj68")]
-position = Vector2(273, 304)
+position = Vector2(6387, 263)
 spawn_item = ExtResource("20_qhcbd")
 
 [node name="Marker2D6" parent="SpawnPoints" instance=ExtResource("25_vaj68")]
-position = Vector2(2000, 110)
+position = Vector2(309, 303)
 spawn_item = ExtResource("19_x5p1p")
 
 [node name="Marker2D8" parent="SpawnPoints" instance=ExtResource("25_vaj68")]
-position = Vector2(316, 304)
+position = Vector2(3618, 330)
 spawn_item = ExtResource("21_f1jbl")
 
 [node name="Marker2D9" parent="SpawnPoints" instance=ExtResource("25_vaj68")]
-position = Vector2(5304, 248)
+position = Vector2(380, 303)
 spawn_item = ExtResource("17_e8heu")
 
 [node name="DROPS" type="Node2D" parent="."]
@@ -914,15 +926,9 @@ scale = Vector2(8.68008, 1)
 position = Vector2(28.0527, 70.5)
 scale = Vector2(0.58374, 0.815407)
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 425.0
-offset_top = 186.0
-offset_right = 838.0
-offset_bottom = 249.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("32_dhpj7")
-theme_override_font_sizes/font_size = 8
-text = "ADD A BLUE FILTER ON WATER"
+[node name="EggsFried" type="Sprite2D" parent="."]
+position = Vector2(1012, 255)
+texture = ExtResource("32_dhpj7")
 
 [connection signal="body_entered" from="Control/OrderChecker" to="Control/OrderChecker" method="_on_body_entered"]
 

@@ -10,7 +10,7 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		print("ouch")
 		#await get_tree().create_timer(1)
-		get_tree().reload_current_scene()
+		GameManager.reset_position()
 
 
 	

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var ICE_ACCELERATION = 5    # Slower acceleration on ice
 
 # Water physics variables
-@export var WATER_SPEED_MULTIPLIER = 0.4
+@export var WATER_SPEED_MULTIPLIER = 0.5
 @export var WATER_JUMP_MULTIPLIER = 0.6
 @export var WATER_GRAVITY_MULTIPLIER = 0.17
 var in_water = false

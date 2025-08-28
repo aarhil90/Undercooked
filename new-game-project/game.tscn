@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://fgspqur5s5p" path="res://Assets/Order_Text.png" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b1qp3oq6tm4ww" path="res://portal.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://blym0mp0w2suc" path="res://killzone.tscn" id="6_ryrav"]
-[ext_resource type="Texture2D" uid="uid://cnptdttu3id7n" path="res://Assets/Free_pixel_food_16x16/Icons/cheese_gouda.png" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://dq6k65v0l21nd" path="res://GroundArea.tscn" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://boov77skqrvrq" path="res://butter_pan.tscn" id="10_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://bf02vhqtoefse" path="res://butter.tscn" id="11_iotsf"]
@@ -31,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://c28ywxgwcpgqg" path="res://magic_shroom.tscn" id="27_bnpwn"]
 [ext_resource type="Material" uid="uid://cbkqmhi4q4gar" path="res://DROP.tres" id="29_bnpwn"]
 [ext_resource type="PackedScene" uid="uid://0ecx6ux7v1x4" path="res://Water.tscn" id="31_xfvwf"]
+[ext_resource type="Texture2D" uid="uid://d31gbsskap2hg" path="res://Assets/Free_pixel_food_16x16/Icons/vegetable_carrot.png" id="32_7knny"]
 [ext_resource type="Texture2D" uid="uid://dwag1rlj8b62y" path="res://Assets/Free_pixel_food_16x16/Icons/eggs_fried.png" id="32_dhpj7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7knny"]
@@ -532,10 +532,6 @@ metadata/_edit_group_ = true
 position = Vector2(15, 47)
 shape = SubResource("WorldBoundaryShape2D_eow3j")
 
-[node name="CheeseGouda" type="Sprite2D" parent="."]
-position = Vector2(1126, 255)
-texture = ExtResource("7_j5wjh")
-
 [node name="SteakRawIndividualOutlineBigWanderTheBanquet" type="Sprite2D" parent="."]
 position = Vector2(897, 255)
 scale = Vector2(1.51924, 1.4)
@@ -929,6 +925,10 @@ scale = Vector2(0.58374, 0.815407)
 [node name="EggsFried" type="Sprite2D" parent="."]
 position = Vector2(1012, 255)
 texture = ExtResource("32_dhpj7")
+
+[node name="VegetableCarrot" type="Sprite2D" parent="."]
+position = Vector2(1126, 255)
+texture = ExtResource("32_7knny")
 
 [connection signal="body_entered" from="Control/OrderChecker" to="Control/OrderChecker" method="_on_body_entered"]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://iam6x8lwewxc"]
+[gd_scene load_steps=10 format=3 uid="uid://iam6x8lwewxc"]
 
 [ext_resource type="Script" uid="uid://cxp0rwjsubfun" path="res://Scripts/menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://brbknapumcg56" path="res://Assets/Screenshot 2025-07-29 090317.png" id="2_ouk20"]
 [ext_resource type="FontFile" uid="uid://b6nl71pe78klm" path="res://Assets/dogicapixel.ttf" id="3_mae5d"]
+[ext_resource type="PackedScene" uid="uid://c4vty0fonp7q2" path="res://player.tscn" id="4_4hy44"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mae5d"]
 texture = ExtResource("2_ouk20")
@@ -151,6 +152,9 @@ theme_override_font_sizes/font_size = 62
 text = "Undercooked"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("4_4hy44")]
+position = Vector2(4162, 775)
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]

@@ -66,15 +66,6 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Volume2" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-
 [node name="back" type="Button" parent="."]
 layout_mode = 0
 offset_left = 14.0
@@ -94,5 +85,40 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_kls10")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0kfld")
 text = "Back"
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 2
+offset_left = 421.0
+offset_top = 174.0
+offset_right = 743.0
+offset_bottom = 270.0
+theme_override_fonts/font = ExtResource("3_ao2gm")
+theme_override_font_sizes/font_size = 31
+text = "Mute"
+alignment = 1
+clip_text = true
+
+[node name="Volume2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 520.0
+offset_top = 283.0
+offset_right = 636.0
+offset_bottom = 306.0
+theme_override_fonts/font = ExtResource("3_ao2gm")
+theme_override_font_sizes/font_size = 22
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+offset_left = 384.0
+offset_top = 293.0
+offset_right = 820.0
+offset_bottom = 353.0
+max_value = 1.5
+step = 0.001
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HSlider"]
+bus = &"BG Music"
+
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

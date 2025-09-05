@@ -113,25 +113,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lti8b")
 text = "Options"
 
-[node name="exit" type="Button" parent="."]
-layout_mode = 2
-offset_left = 430.0
-offset_top = 492.0
-offset_right = 723.0
-offset_bottom = 560.0
-size_flags_horizontal = 5
-size_flags_vertical = 7
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mae5d")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mae5d")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4hy44")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ytr4m")
-theme_override_styles/normal = SubResource("StyleBoxFlat_lti8b")
-text = "Exit"
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -159,4 +140,3 @@ position = Vector2(4162, 775)
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

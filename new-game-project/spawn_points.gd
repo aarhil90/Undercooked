@@ -1,12 +1,11 @@
 extends Node2D
-
 @export var pickups : Array[PackedScene]
 @onready var spawn_points = get_tree().get_nodes_in_group("SpawnPoint")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	add_to_group("SpawnPointsManager")  # Add this line
 	spawn_food()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

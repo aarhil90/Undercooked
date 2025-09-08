@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @export var SPEED = 120.0
 @export var JUMP_VELOCITY = -300.0
 @export var BASE_FRICTION = 10
@@ -10,10 +11,11 @@ extends CharacterBody2D
 @export var WATER_SPEED_MULTIPLIER = 0.5
 @export var WATER_JUMP_MULTIPLIER = 0.6
 @export var WATER_GRAVITY_MULTIPLIER = 0.17
-var in_water = false
 
+var in_water = false
 var active_friction = BASE_FRICTION
 var active_acceleration = BASE_ACCELERATION
+
 @onready var ray: RayCast2D = $floorRayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var items_collected : Array[Texture2D] = []
@@ -81,8 +83,6 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("jump")
 
 # Water area signal handlers - use these names when connecting signals
-
-
 func add_item(sprite:Texture2D):
 	# Only add if not already in inventory (set behavior)
 	if not items_collected.has(sprite):
@@ -96,14 +96,15 @@ func update_inventory_display():
 	if inventory_ui and inventory_ui.has_method("update_inventory"):
 		inventory_ui.update_inventory(items_collected)
 
+func clear_inventory():
+	items_collected.clear()
+	update_inventory_display()
 
 func _on_water_detection_area_entered(area: Area2D) -> void:
 	print("WATER")
 	if area is Water:
 		in_water = true
 		print("Entered water")
-
-
 
 func _on_water_detection_area_exited(area: Area2D) -> void:
 	if area is Water:

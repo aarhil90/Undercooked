@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Bgmusic="*res://Assets/music/bgmusic.tscn"
 GameManager="*res://GameManager.gd"
+HighScoreManager="*res://high_score_scene.gd"
 
 [editor_plugins]
 

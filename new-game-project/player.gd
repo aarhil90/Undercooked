@@ -23,6 +23,7 @@ var inventory_ui: Control = null
 
 func _ready():
 	add_to_group("Player")
+	GameManager.find_player()
 	# Find inventory UI in the scene
 	inventory_ui = get_tree().get_first_node_in_group("InventoryUI")
 	

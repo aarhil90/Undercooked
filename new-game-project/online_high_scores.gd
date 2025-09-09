@@ -118,55 +118,55 @@ const app = express();
 
 app.use(express.json());
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Methods', 'GET, POST');
-    next();
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Headers', 'Content-Type');
+	res.header('Access-Control-Allow-Methods', 'GET, POST');
+	next();
 });
 
 const db = new sqlite3.Database('scores.db');
 
 // Create table
 db.run(`CREATE TABLE IF NOT EXISTS scores (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    game_id TEXT,
-    player_name TEXT,
-    score INTEGER,
-    timestamp INTEGER
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	game_id TEXT,
+	player_name TEXT,
+	score INTEGER,
+	timestamp INTEGER
 )`);
 
 // Submit score
 app.post('/api/scores', (req, res) => {
-    const { game_id, player_name, score, timestamp } = req.body;
-    
-    db.run('INSERT INTO scores (game_id, player_name, score, timestamp) VALUES (?, ?, ?, ?)',
-        [game_id, player_name, score, timestamp],
-        function(err) {
-            if (err) {
-                res.status(500).json({ error: err.message });
-            } else {
-                res.json({ id: this.lastID });
-            }
-        });
+	const { game_id, player_name, score, timestamp } = req.body;
+	
+	db.run('INSERT INTO scores (game_id, player_name, score, timestamp) VALUES (?, ?, ?, ?)',
+		[game_id, player_name, score, timestamp],
+		function(err) {
+			if (err) {
+				res.status(500).json({ error: err.message });
+			} else {
+				res.json({ id: this.lastID });
+			}
+		});
 });
 
 // Get scores
 app.get('/api/scores', (req, res) => {
-    const { game_id, limit = 10 } = req.query;
-    
-    db.all('SELECT player_name, score, timestamp FROM scores WHERE game_id = ? ORDER BY score DESC LIMIT ?',
-        [game_id, parseInt(limit)],
-        (err, rows) => {
-            if (err) {
-                res.status(500).json({ error: err.message });
-            } else {
-                res.json(rows);
-            }
-        });
+	const { game_id, limit = 10 } = req.query;
+	
+	db.all('SELECT player_name, score, timestamp FROM scores WHERE game_id = ? ORDER BY score DESC LIMIT ?',
+		[game_id, parseInt(limit)],
+		(err, rows) => {
+			if (err) {
+				res.status(500).json({ error: err.message });
+			} else {
+				res.json(rows);
+			}
+		});
 });
 
 app.listen(3000, () => {
-    console.log('High score server running on port 3000');
+	console.log('High score server running on port 3000');
 });
 
 DEPLOYMENT:

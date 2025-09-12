@@ -101,3 +101,8 @@ func player_has_high_score(player_name: String) -> bool:
 		if entry.name == player_name:
 			return true
 	return false
+
+
+func _on_menu_button_pressed() -> void:
+	print ("menu pressed")
+	get_tree().change_scene_to_file("res://menu.tscn")

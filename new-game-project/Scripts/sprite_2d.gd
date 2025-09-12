@@ -1,6 +1,6 @@
 extends Area2D
+
 @export var is_ice: bool = false
-@export var affect_radius: float = 200.0  # How far to affect tiles
 
 func _ready():
 	print("Ice block ready! Is ice: ", is_ice)
@@ -8,18 +8,17 @@ func _ready():
 
 func _on_body_entered(body):
 	print("SOMETHING ENTERED THE ICE BLOCK!")
+	print("Body name: ", body.name)
 	print("This ice block is_ice: ", is_ice)
 	
+	# Check for player
 	if body.name == "Player" or body.is_in_group("Player") or body.name == "layer0":
-		print("Player detected! Changing nearby floor tiles...")
+		print("Player detected! Changing all floor tiles...")
 		
+		# Find and modify all floor tiles
 		var floor_tiles = get_tree().get_nodes_in_group("FLOOR")
-		var changed_count = 0
-		
 		for tile in floor_tiles:
-			# Only affect tiles within the radius
-			if global_position.distance_to(tile.global_position) <= affect_radius:
-				tile.is_ice = is_ice
-				changed_count += 1
+			tile.is_ice = is_ice
+			print("Set floor tile ice to: ", is_ice)
 		
-		print("Changed ", changed_count, " nearby floor tiles to ice: ", is_ice)
+		print("Changed ", floor_tiles.size(), " floor tiles")

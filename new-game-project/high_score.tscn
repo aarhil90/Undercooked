@@ -58,7 +58,6 @@ text = "🎉 NEW HIGH SCORE! 🎉"
 horizontal_alignment = 1
 
 [node name="NameInput" type="LineEdit" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 16
@@ -100,3 +99,5 @@ size_flags_vertical = 3
 [node name="HighScoresList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

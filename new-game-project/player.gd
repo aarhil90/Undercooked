@@ -1,21 +1,17 @@
 extends CharacterBody2D
-
 @export var SPEED = 120.0
 @export var JUMP_VELOCITY = -300.0
 @export var BASE_FRICTION = 10
 @export var ICE_FRICTION = 2
 @export var BASE_ACCELERATION = 15  # Add acceleration control
 @export var ICE_ACCELERATION = 5    # Slower acceleration on ice
-
 # Water physics variables
 @export var WATER_SPEED_MULTIPLIER = 0.5
 @export var WATER_JUMP_MULTIPLIER = 0.6
 @export var WATER_GRAVITY_MULTIPLIER = 0.17
-
 var in_water = false
 var active_friction = BASE_FRICTION
 var active_acceleration = BASE_ACCELERATION
-
 @onready var ray: RayCast2D = $floorRayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var items_collected : Array[Texture2D] = []

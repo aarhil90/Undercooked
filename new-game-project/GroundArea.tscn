@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c14we077xnglt" path="res://ice_block.gd" id="1_5l574"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8de0g"]
-size = Vector2(32.0679, 43)
+size = Vector2(22.7932, 43)
 
 [node name="GroundBlock" type="Area2D" groups=["FLOOR"]]
 script = ExtResource("1_5l574")
